@@ -12,19 +12,25 @@
 
 html,
 body {
-  background-color: #9D8420;
+  background-image: url(https://stevens-wood.com/sites/default/files/swatches/L30-Evening%20Notte.jpg);
+}
+
+.hello {
+  color:rgb(144,100,55);
 }
 
 .col-sm-12 {
-  background-color: #9D8420;
+  background-color: #9d8460;
 }
 
 .dragClass {
-  background-color: #83B692;
+  background-color: #750080;
 }
 
+
+
 h1 {
-  background-color: #9D8420;
+  background-image: url(https://stevens-wood.com/sites/default/files/swatches/L30-Evening%20Notte.jpg);
   position: relative;
   right: 15px;
   width: 1140px;
@@ -34,13 +40,16 @@ h1 {
 }
 
 h2 {
+  border-radius: 25px;
   font-size: 20px;
-  background-color: #eeeeee;
+  background-color:rgb(0,0,102);
   position: relative;
   left: 35px;
   font-family: sans-serif;
   font-weight: bold;
   width: 200px;
+  text-align: center;
+  color: rgb(255,255,255)
 }
 
 li {
@@ -48,18 +57,6 @@ li {
   font-family: sans-serif;
 }
 
-#add {
-  color: #444444;
-  background-color: #cccccc;
-  border: 3px solid #aaaaaa;
-  border-radius: 2px;
-  position: relative;
-  left: 5px;
-}
-
-#add:hover {
-  background-color: #eeeeee;
-}
 
 #addClass {
   background-color: #cccccc;
@@ -68,14 +65,26 @@ li {
 }
 
 li {
-  background-color: #e4e4e4;
+  background-color: rgb(150,150,150);
   border: 1px solid #eeeeee;
+  border-radius: 25px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
 }
 </style>
 </head>
 <body translate="no">
 <div class='container-fluid'>
 <h1>Animal, Vegetable, or Mineral?</h1>
+<div class="alert alert-warning alert-dismissible fade hide" role="alert">
+<strong>CONGRATS!</strong>
+<div class=hello>You beat the game!</div>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
 <div class="alert alert-primary" role="alert">Score: <span id="score">0</span></div>
 <div class='row'>
 <div class="col-sm-3">
@@ -101,10 +110,13 @@ li {
 </div>
 </div>
 </div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.1/Sortable.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script id="rendered-js">
       console.clear();
 const items = [];
+
 
 function createItem(name, category) {
   console.log(name, category);
@@ -145,6 +157,12 @@ function doOnEnd(e) {
   }
   console.log("score:", score);
   document.getElementById("score").textContent = score;
+  if (score === 5) {
+    console.log("hello");
+    $('.alert').alert()
+    
+   
+  }
 }
 new Sortable(main, {
   animation: 150,
